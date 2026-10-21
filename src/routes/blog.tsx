@@ -1,19 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { BlogPage } from "../pages/blog/BlogPage";
+import { createSEO } from "../lib/seo";
+import { PageLoader } from "../components/ui/PageLoader";
+
 export const Route = createFileRoute("/blog")({
+    head: () =>
+        createSEO({
+            title: "Blog — ADEIZA",
+            description:
+                "Explore insights, ideas, and practical articles about web development, UI/UX design, SaaS, technology, and digital growth.",
+            path: "/blog",
+        }),
+
+    pendingComponent: PageLoader,
+
     component: BlogPage,
 });
-
-function BlogPage() {
-    return (
-        <section className="mx-auto max-w-7xl px-6 py-20">
-            <h1 className="text-4xl font-bold">
-                Blog
-            </h1>
-
-            <p className="mt-4 text-gray-600">
-                Insights, ideas, and updates from our agency.
-            </p>
-        </section>
-    );
-}

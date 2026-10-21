@@ -1,19 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { ServicesPage } from "../pages/services/ServicesPage";
+import { createSEO } from "../lib/seo";
+import { PageLoader } from "../components/ui/PageLoader";
+
 export const Route = createFileRoute("/services")({
+    head: () =>
+        createSEO({
+            title: "Digital Services — ADEIZA",
+            description:
+                "Explore ADEIZA's digital services including web development, UI/UX design, SaaS development, e-commerce solutions, web applications, and digital strategy.",
+            path: "/services",
+        }),
+
+    pendingComponent: PageLoader,
+
     component: ServicesPage,
 });
-
-function ServicesPage() {
-    return (
-        <section className="mx-auto max-w-7xl px-6 py-20">
-            <h1 className="text-4xl font-bold">
-                Our Services
-            </h1>
-
-            <p className="mt-4 text-gray-600">
-                Explore the services we offer.
-            </p>
-        </section>
-    );
-}
